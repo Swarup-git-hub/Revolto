@@ -1,0 +1,43 @@
+@import "@fontsource-variable/figtree";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: light; }
+html, body, #root { min-height: 100%; }
+body { @apply bg-canvas font-sans text-ink antialiased; font-size: 15px; line-height: 1.55; }
+h1, h2, h3 { letter-spacing: -0.01em; }
+:focus-visible { outline: 3px solid #3F5F7A; outline-offset: 2px; border-radius: 10px; }
+
+@layer components {
+  /* Raised clay surface */
+  .clay { @apply rounded-clay bg-gradient-to-br from-[#F6F8F7] to-[#EBEFED] shadow-clay; }
+  .clay-sm { @apply rounded-well bg-gradient-to-br from-[#F6F8F7] to-[#EBEFED] shadow-clay-sm; }
+  /* Pressed-in well (inputs, stat wells, tracks) */
+  .well { @apply rounded-well bg-[#E4E9E7] shadow-well; }
+
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-well px-4 py-2.5 text-sm font-semibold transition-all duration-150 disabled:cursor-not-allowed disabled:opacity-50 select-none; }
+  .btn-primary { @apply btn bg-gradient-to-br from-[#4B6E8A] to-[#385670] text-white shadow-clay-sm hover:from-[#46687F] hover:to-[#2F4A61] active:shadow-press active:translate-y-px; }
+  .btn-soft { @apply btn clay-sm text-ink hover:text-slate-deep active:shadow-well active:translate-y-px; }
+  .btn-danger { @apply btn bg-gradient-to-br from-[#B25A51] to-[#8E3F38] text-white shadow-clay-sm active:shadow-press active:translate-y-px; }
+  .btn-ghost { @apply btn text-ink-soft hover:bg-white/60; }
+  .btn-sm { @apply px-3 py-1.5 text-[13px]; }
+
+  .field { @apply w-full well px-3.5 py-2.5 text-[15px] text-ink placeholder:text-ink-mute/80 border border-transparent focus:border-slate-brand focus:outline-none; }
+  .field[aria-invalid="true"] { @apply border-brick; }
+  .label { @apply mb-1.5 block text-[13px] font-semibold text-ink-soft; }
+  .help { @apply mt-1 text-[12.5px] text-ink-mute; }
+  .err { @apply mt-1 text-[12.5px] font-medium text-brick-ink; }
+
+  .th { @apply px-4 py-3 text-left text-[12.5px] font-semibold text-ink-mute; }
+  .td { @apply px-4 py-3 align-middle; }
+  .row-link { @apply cursor-pointer transition-colors hover:bg-white/55; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .rise { animation: rise .35s ease-out both; }
+  @keyframes rise { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  .shimmer { background: linear-gradient(90deg, #E0E6E3 25%, #EEF2F0 50%, #E0E6E3 75%); background-size: 200% 100%; animation: shimmer 1.3s infinite; }
+  @keyframes shimmer { to { background-position: -200% 0; } }
+}
+@media (prefers-reduced-motion: reduce) { .shimmer { background: #E0E6E3; } * { transition: none !important; } }

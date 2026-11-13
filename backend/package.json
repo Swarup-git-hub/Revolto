@@ -1,0 +1,45 @@
+{
+  "name": "reviewslot-backend",
+  "version": "2.1.0",
+  "private": true,
+  "description": "Project Progress, Review & Performance Management API",
+  "type": "module",
+  "engines": {
+    "node": ">=20.19"
+  },
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "test": "node tests/run.js",
+    "bootstrap:hod": "node scripts/bootstrap-hod.js",
+    "migrate:v2": "node scripts/migrate-v1-to-v2.js",
+    "seed:demo": "node scripts/seed-demo.js",
+    "retry:emails": "node scripts/retry-failed-emails.js",
+    "verify:deployment": "node scripts/verify-deployment.js",
+    "reconcile:counters": "node scripts/reconcile-counters.js",
+    "check:consistency": "node scripts/check-consistency.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^18.0.9",
+    "exceljs": "^4.4.0",
+    "express": "^4.22.3",
+    "express-rate-limit": "^8.7.3",
+    "helmet": "^8.3.0",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^8.24.7",
+    "multer": "^2.5.0",
+    "nodemailer": "^10.3.1",
+    "socket.io": "^4.8.4"
+  },
+  "overrides": {
+    "uuid": "^11.1.1"
+  },
+  "devDependencies": {
+    "socket.io-client": "^4.8.4"
+  },
+  "optionalDependencies": {
+    "@socket.io/redis-adapter": "^8.3.0",
+    "redis": "^6.3.1"
+  }
+}
